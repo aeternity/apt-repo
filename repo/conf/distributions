@@ -1,0 +1,7 @@
+Origin: apt.aeternity.io
+Label: apt.aeternity.io
+Codename: bionic
+Architectures: amd64
+Components: main testing
+Description: Aeternity Repository
+SignWith: D18ABB45C5AF91A0D835367E2106A773A40AFAEB
