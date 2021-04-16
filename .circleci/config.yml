@@ -1,0 +1,48 @@
+version: 2.1
+
+executors:
+  infra_stable:
+    docker:
+      - image: aeternity/infrastructure:latest
+    environment:
+      SECRETS_OUTPUT_DIR: /secrets
+
+commands:
+  setup_secrets:
+    steps:
+      - run:
+          name: Setup environment secrets
+          command: cd /infrastructure && make secrets
+
+  aws_sync:
+    steps:
+      - run:
+          name: Upload release artifacts to central repository (AWS)
+          command: |
+            envdir $SECRETS_OUTPUT_DIR \
+              aws s3 sync --acl public-read --delete repo/ s3://aeternity-node-apt
+
+  publish_repo:
+    steps:
+      - checkout
+      - setup_secrets
+      - aws_sync
+
+jobs:
+  publish_aws:
+    executor: infra_stable
+    steps:
+      - checkout
+      - setup_secrets
+      - aws_sync
+
+workflows:
+  version: 2
+  publish:
+    jobs:
+      - publish_aws:
+          context: ae-node-assets
+          filters:
+            branches:
+              only:
+                - master
