@@ -5,7 +5,7 @@ executors:
     docker:
       - image: circleci/buildpack-deps:xenial
       - image: aeternity/infrastructure:latest
-        command: [bash -c "cd /infrastructure && make secrets"]
+        command: "cd /infrastructure && make secrets"
     environment:
       SECRETS_OUTPUT_DIR: /secrets
       REPO_PATH: repo/
