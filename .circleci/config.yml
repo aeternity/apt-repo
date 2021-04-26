@@ -5,9 +5,10 @@ executors:
     docker:
       - image: circleci/buildpack-deps:xenial
     environment:
-      REPO_PATH: repo/
-      INBOX_PATH: inbox/aeternity-node
-      MASTER_PATH: /home/circleci/master
+      MASTER_DIR: /home/circleci/master
+      INBOX_DIR: /home/circleci/project
+      APT_REPO_PATH: /home/circleci/master/repo/
+      INBOX_PATH: /home/circleci/project/inbox/aeternity-node
   infra_stable:
     docker:
       - image: aeternity/infrastructure:latest
@@ -76,7 +77,7 @@ commands:
           name: Add directory to deb repository
           command: |
             find $INBOX_PATH/<< parameters.component >> -name '*.deb' | xargs --no-run-if-empty \
-              reprepro -b $MASTER_PATH/$REPO_PATH -C << parameters.component >> includedeb << parameters.codename >>
+              reprepro -b $APT_REPO_PATH -C << parameters.component >> includedeb << parameters.codename >>
 
   clean_inbox:
     parameters:
@@ -117,19 +118,19 @@ jobs:
       - setup_gpg
       - checkout
       - checkout_master:
-          path: $MASTER_PATH
+          path: $MASTER_DIR
       - includedeb:
           component: testing
       - includedeb:
           component: main
       - git_push:
-          path: $MASTER_PATH
+          path: $MASTER_DIR
       - clean_inbox:
           component: testing
       - clean_inbox:
           component: main
       - git_push:
-          path: $CIRCLE_WORKING_DIRECTORY
+          path: $INBOX_DIR
 
   publish_aws:
     executor: infra_stable
