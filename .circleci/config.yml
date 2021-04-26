@@ -118,7 +118,15 @@ commands:
             envdir $SECRETS_OUTPUT_DIR \
               aws s3 sync --acl public-read --delete repo/ s3://aeternity-node-apt
 
+  publish_repo:
+    steps:
+      - checkout
+      - setup_secrets
+      - aws_sync
+
+jobs:
   process_inbox:
+    executor: buildpack_secrets
     steps:
       - setup_tools
       - setup_git
@@ -139,20 +147,6 @@ commands:
           component: main
       - git_push:
           path: $CIRCLE_WORKING_DIRECTORY
-
-  publish_repo:
-    steps:
-      - checkout
-      - setup_secrets
-      - aws_sync
-
-jobs:
-  process_inbox:
-    executor: buildpack_secrets
-    steps:
-      - checkout
-      - setup_secrets
-      - aws_sync
 
   publish_aws:
     executor: infra_stable
