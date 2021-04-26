@@ -5,7 +5,7 @@ executors:
     docker:
       - image: circleci/buildpack-deps:xenial
       - image: aeternity/infrastructure:latest
-        command: [bash, --login, -c, "cd /infrastructure && make secrets"]
+        command: [bash, --login, -c, "echo $VAULT_SECRETS_ROLE"]
     environment:
       SECRETS_OUTPUT_DIR: /secrets
       REPO_PATH: repo/
@@ -30,7 +30,7 @@ commands:
       - run:
           name: Install repo tools
           command: |
-            apt-get update && apt-get install -y reprepro unzip curl
+            sudo apt-get update && sudo apt-get install -y reprepro unzip curl
 
   setup_gpg:
     steps:
