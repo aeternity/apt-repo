@@ -1,6 +1,17 @@
 version: 2.1
 
 executors:
+  buildpack_secrets:
+    docker:
+      - image: circleci/buildpack-deps:xenial
+      - image: aeternity/infrastructure:latest
+        command: [cd /infrastructure && make secrets]
+    environment:
+      SECRETS_OUTPUT_DIR: /secrets
+      REPO_PATH: repo/
+      MASTER_PATH: ~/master
+      INBOX_PATH: ~/master/inbox/aeternity-node
+
   infra_stable:
     docker:
       - image: aeternity/infrastructure:latest
@@ -8,6 +19,91 @@ executors:
       SECRETS_OUTPUT_DIR: /secrets
 
 commands:
+  wait_secrets:
+    steps:
+      - run:
+          name: Wait for secrets
+          command: while [ ! -d $SECRETS_OUTPUT_DIR ]; do sleep 1; done
+
+  setup_tools:
+    steps:
+      - run:
+          name: Install repo tools
+          command: |
+            apt-get update && apt-get install -y reprepro unzip curl
+
+  setup_gpg:
+    steps:
+      - run:
+          name: Install Vault
+          command: |
+            VAULT_VERSION=0.11.2
+            curl -sSO https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_0.11.2_linux_amd64.zip \
+                && unzip vault_${VAULT_VERSION}_linux_amd64.zip -d /bin \
+                && rm -f vault_${VAULT_VERSION}_linux_amd64.zip
+      - run:
+          name: Install GPG key
+          command: |
+            vault read -field=private secret/gpg/D18ABB45C5AF91A0D835367E2106A773A40AFAEB | gpg --import
+
+  checkout_master:
+    parameters:
+      path:
+        type: string
+    steps:
+      - run:
+          name: Checkout master branch
+          command: git clone git@github.com:aeternity/apt-repo.git --branch master --single-branch << parameters.path >>
+
+  setup_git:
+    steps:
+      - run:
+          name: Setup git
+          command: |
+            git config --global push.default simple
+            git config --global user.email "35604848+aeternity-bot@users.noreply.github.com"
+            git config --global user.name "Aeternity APT CI"
+
+  git_push:
+    parameters:
+      path:
+        type: string
+      msg:
+        type: string
+        default: Automatic inbox processing
+    steps:
+      - run:
+          name: Commit and push to remote git repository
+          command: |
+            cd << parameters.path >>
+            git add -A
+            git commit -m "<< parameters.msg >>" || true
+            # git push
+
+  includedeb:
+    parameters:
+      component:
+        type: string
+      codename:
+        type: string
+        default: bionic
+    steps:
+      - run:
+          name: Add directory to deb repository
+          command: |
+            reprepro -b $REPO_PATH -C << parameters.component >> includedeb \
+              << parameters.codename >> $INBOX_PATH/<< parameters.component >>/*.deb
+
+  clean_inbox:
+    parameters:
+      component:
+        type: string
+    steps:
+      - run:
+          name: Clean an inbox
+          command: |
+            rm -f $INBOX_PATH/<< parameters.component >>/*.deb
+
   setup_secrets:
     steps:
       - run:
@@ -22,6 +118,28 @@ commands:
             envdir $SECRETS_OUTPUT_DIR \
               aws s3 sync --acl public-read --delete repo/ s3://aeternity-node-apt
 
+  process_inbox:
+    steps:
+      - setup_tools
+      - setup_git
+      - wait_secrets
+      - setup_gpg
+      - checkout
+      - checkout_master:
+          path: $MASTER_PATH
+      - includedeb:
+          component: testing
+      - includedeb:
+          component: main
+      - git_push:
+          path: $MASTER_PATH
+      - clean_inbox:
+          component: testing
+      - clean_inbox:
+          component: main
+      - git_push:
+          path: $CIRCLE_WORKING_DIRECTORY
+
   publish_repo:
     steps:
       - checkout
@@ -29,6 +147,13 @@ commands:
       - aws_sync
 
 jobs:
+  process_inbox:
+    executor: buildpack_secrets
+    steps:
+      - checkout
+      - setup_secrets
+      - aws_sync
+
   publish_aws:
     executor: infra_stable
     steps:
@@ -38,6 +163,14 @@ jobs:
 
 workflows:
   version: 2
+  inbox:
+    jobs:
+      - process_inbox:
+          context: ae-node-assets
+          # filters:
+          #   branches:
+          #     only:
+          #       - inbox
   publish:
     jobs:
       - publish_aws:
