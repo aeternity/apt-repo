@@ -75,8 +75,8 @@ commands:
       - run:
           name: Add directory to deb repository
           command: |
-            reprepro -b $MASTER_PATH/$REPO_PATH -C << parameters.component >> includedeb \
-              << parameters.codename >> $INBOX_PATH/<< parameters.component >>/*.deb
+            find << parameters.codename >> $INBOX_PATH/<< parameters.component >> -name '*.deb' | xargs \
+              reprepro -b $MASTER_PATH/$REPO_PATH -C << parameters.component >> includedeb << parameters.codename >>
 
   clean_inbox:
     parameters:
