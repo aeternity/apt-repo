@@ -29,7 +29,7 @@ commands:
       - run:
           name: Install GPG key
           command: |
-            echo $PGP_PRIVATE_KEY | gpg --import
+            echo $PGP_PRIVATE_KEY | base64 -d | gpg --import
 
   checkout_master:
     parameters:
