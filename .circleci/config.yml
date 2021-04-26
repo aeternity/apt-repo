@@ -71,8 +71,6 @@ commands:
       codename:
         type: string
         default: bionic
-      inbox_path:
-        type: string
     steps:
       - run:
           name: Add directory to deb repository
@@ -83,8 +81,6 @@ commands:
   clean_inbox:
     parameters:
       component:
-        type: string
-      inbox_path:
         type: string
     steps:
       - run:
