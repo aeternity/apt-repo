@@ -6,8 +6,6 @@ executors:
       - image: circleci/buildpack-deps:xenial
     environment:
       REPO_PATH: repo/
-      MASTER_PATH: ~/master
-      INBOX_PATH: ~/master/inbox/aeternity-node
 
   infra_stable:
     docker:
@@ -72,22 +70,26 @@ commands:
       codename:
         type: string
         default: bionic
+      inbox_path:
+        type: string
     steps:
       - run:
           name: Add directory to deb repository
           command: |
             reprepro -b $REPO_PATH -C << parameters.component >> includedeb \
-              << parameters.codename >> $INBOX_PATH/<< parameters.component >>/*.deb
+              << parameters.codename >> << parameters.inbox_path >>/<< parameters.component >>/*.deb
 
   clean_inbox:
     parameters:
       component:
         type: string
+      inbox_path:
+        type: string
     steps:
       - run:
           name: Clean an inbox
           command: |
-            rm -f $INBOX_PATH/<< parameters.component >>/*.deb
+            rm -f << parameters.inbox_path >>/<< parameters.component >>/*.deb
 
   setup_secrets:
     steps:
@@ -112,22 +114,33 @@ commands:
 jobs:
   process_inbox:
     executor: buildpack
+    parameters:
+      master_path:
+        type: string
+        default: $CIRCLE_WORKING_DIRECTORY/master
+      inbox_path:
+        type: string
+        default: $CIRCLE_WORKING_DIRECTORY/master/inbox/aeternity-node
     steps:
       - setup_tools
       - setup_git
       - setup_gpg
       - checkout
       - checkout_master:
-          path: $MASTER_PATH
+          path: << parameters.master_path >>
       - includedeb:
+          inbox_path: << parameters.inbox_path >>
           component: testing
       - includedeb:
+          inbox_path: << parameters.inbox_path >>
           component: main
       - git_push:
-          path: $MASTER_PATH
+          path: << parameters.master_path >>
       - clean_inbox:
+          inbox_path: << parameters.inbox_path >>
           component: testing
       - clean_inbox:
+          inbox_path: << parameters.inbox_path >>
           component: main
       - git_push:
           path: $CIRCLE_WORKING_DIRECTORY
