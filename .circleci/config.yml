@@ -117,10 +117,8 @@ jobs:
     parameters:
       master_path:
         type: string
-        default: $CIRCLE_WORKING_DIRECTORY/master
       inbox_path:
         type: string
-        default: $CIRCLE_WORKING_DIRECTORY/master/inbox/aeternity-node
     steps:
       - setup_tools
       - setup_git
@@ -158,6 +156,8 @@ workflows:
     jobs:
       - process_inbox:
           context: ae-node-assets
+          master_path: $CIRCLE_WORKING_DIRECTORY/master
+          inbox_path: $CIRCLE_WORKING_DIRECTORY/master/inbox/aeternity-node
           # filters:
           #   branches:
           #     only:
