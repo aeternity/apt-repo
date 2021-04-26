@@ -1,13 +1,10 @@
 version: 2.1
 
 executors:
-  buildpack_secrets:
+  buildpack:
     docker:
       - image: circleci/buildpack-deps:xenial
-      - image: aeternity/infrastructure:latest
-        command: [bash, --login, -c, "echo $VAULT_SECRETS_ROLE"]
     environment:
-      SECRETS_OUTPUT_DIR: /secrets
       REPO_PATH: repo/
       MASTER_PATH: ~/master
       INBOX_PATH: ~/master/inbox/aeternity-node
@@ -16,35 +13,23 @@ executors:
     docker:
       - image: aeternity/infrastructure:latest
     environment:
+      REPO_PATH: repo/
       SECRETS_OUTPUT_DIR: /secrets
 
 commands:
-  wait_secrets:
-    steps:
-      - run:
-          name: Wait for secrets
-          command: while [ ! -d $SECRETS_OUTPUT_DIR ]; do sleep 1; done
-
   setup_tools:
     steps:
       - run:
           name: Install repo tools
           command: |
-            sudo apt-get update && sudo apt-get install -y reprepro unzip curl
+            sudo apt-get update && sudo apt-get install -y reprepro
 
   setup_gpg:
     steps:
       - run:
-          name: Install Vault
-          command: |
-            VAULT_VERSION=0.11.2
-            curl -sSO https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_0.11.2_linux_amd64.zip \
-                && unzip vault_${VAULT_VERSION}_linux_amd64.zip -d /bin \
-                && rm -f vault_${VAULT_VERSION}_linux_amd64.zip
-      - run:
           name: Install GPG key
           command: |
-            vault read -field=private secret/gpg/D18ABB45C5AF91A0D835367E2106A773A40AFAEB | gpg --import
+            echo $PGP_PRIVATE_KEY | gpg --import
 
   checkout_master:
     parameters:
@@ -116,7 +101,7 @@ commands:
           name: Upload release artifacts to central repository (AWS)
           command: |
             envdir $SECRETS_OUTPUT_DIR \
-              aws s3 sync --acl public-read --delete repo/ s3://aeternity-node-apt
+              aws s3 sync --acl public-read --delete $REPO_PATH s3://aeternity-node-apt
 
   publish_repo:
     steps:
@@ -126,11 +111,10 @@ commands:
 
 jobs:
   process_inbox:
-    executor: buildpack_secrets
+    executor: buildpack
     steps:
       - setup_tools
       - setup_git
-      - wait_secrets
       - setup_gpg
       - checkout
       - checkout_master:
