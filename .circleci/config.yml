@@ -63,7 +63,7 @@ commands:
             cd << parameters.path >>
             git add -A
             git commit -m "<< parameters.msg >>" || true
-            # git push
+            git push
 
   includedeb:
     parameters:
@@ -145,10 +145,11 @@ workflows:
     jobs:
       - process_inbox:
           context: ae-node-assets
-          # filters:
-          #   branches:
-          #     only:
-          #       - inbox
+          filters:
+            branches:
+              only:
+                - inbox
+
   publish:
     jobs:
       - publish_aws:
