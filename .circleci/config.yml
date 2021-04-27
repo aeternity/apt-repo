@@ -55,7 +55,6 @@ commands:
         type: string
       msg:
         type: string
-        default: Automatic inbox processing
     steps:
       - run:
           name: Commit and push to remote git repository
@@ -125,12 +124,14 @@ jobs:
           component: main
       - git_push:
           path: $MASTER_DIR
+          msg: "Automatic inbox processing"
       - clean_inbox:
           component: testing
       - clean_inbox:
           component: main
       - git_push:
           path: $INBOX_DIR
+          msg: "[skip ci] Automatic inbox cleanup"
 
   publish_aws:
     executor: infra_stable
