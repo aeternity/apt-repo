@@ -1,13 +1,94 @@
 version: 2.1
 
 executors:
+  buildpack:
+    docker:
+      - image: circleci/buildpack-deps:xenial
+    environment:
+      MASTER_DIR: /home/circleci/master
+      INBOX_DIR: /home/circleci/project
+      APT_REPO_PATH: /home/circleci/master/repo/
+      INBOX_PATH: /home/circleci/project/inbox/aeternity-node
   infra_stable:
     docker:
       - image: aeternity/infrastructure:latest
     environment:
+      REPO_PATH: repo/
       SECRETS_OUTPUT_DIR: /secrets
 
 commands:
+  setup_tools:
+    steps:
+      - run:
+          name: Install repo tools
+          command: |
+            sudo apt-get update && sudo apt-get install -y reprepro
+
+  setup_gpg:
+    steps:
+      - run:
+          name: Install GPG key
+          command: |
+            echo $PGP_PRIVATE_KEY | base64 -d | gpg --import
+
+  checkout_master:
+    parameters:
+      path:
+        type: string
+    steps:
+      - run:
+          name: Checkout master branch
+          command: git clone git@github.com:aeternity/apt-repo.git --branch master --single-branch << parameters.path >>
+
+  setup_git:
+    steps:
+      - run:
+          name: Setup git
+          command: |
+            git config --global push.default simple
+            git config --global user.email "35604848+aeternity-bot@users.noreply.github.com"
+            git config --global user.name "Aeternity APT CI"
+
+  git_push:
+    parameters:
+      path:
+        type: string
+      msg:
+        type: string
+        default: Automatic inbox processing
+    steps:
+      - run:
+          name: Commit and push to remote git repository
+          command: |
+            cd << parameters.path >>
+            git add -A
+            git commit -m "<< parameters.msg >>" || true
+            git push
+
+  includedeb:
+    parameters:
+      component:
+        type: string
+      codename:
+        type: string
+        default: bionic
+    steps:
+      - run:
+          name: Add directory to deb repository
+          command: |
+            find $INBOX_PATH/<< parameters.component >> -name '*.deb' | xargs --no-run-if-empty \
+              reprepro -b $APT_REPO_PATH -C << parameters.component >> includedeb << parameters.codename >>
+
+  clean_inbox:
+    parameters:
+      component:
+        type: string
+    steps:
+      - run:
+          name: Clean an inbox
+          command: |
+            rm -f $INBOX_PATH/<< parameters.component >>/*.deb
+
   setup_secrets:
     steps:
       - run:
@@ -20,7 +101,7 @@ commands:
           name: Upload release artifacts to central repository (AWS)
           command: |
             envdir $SECRETS_OUTPUT_DIR \
-              aws s3 sync --acl public-read --delete repo/ s3://aeternity-node-apt
+              aws s3 sync --acl public-read --delete $REPO_PATH s3://aeternity-node-apt
 
   publish_repo:
     steps:
@@ -29,6 +110,28 @@ commands:
       - aws_sync
 
 jobs:
+  process_inbox:
+    executor: buildpack
+    steps:
+      - setup_tools
+      - setup_git
+      - setup_gpg
+      - checkout
+      - checkout_master:
+          path: $MASTER_DIR
+      - includedeb:
+          component: testing
+      - includedeb:
+          component: main
+      - git_push:
+          path: $MASTER_DIR
+      - clean_inbox:
+          component: testing
+      - clean_inbox:
+          component: main
+      - git_push:
+          path: $INBOX_DIR
+
   publish_aws:
     executor: infra_stable
     steps:
@@ -38,6 +141,15 @@ jobs:
 
 workflows:
   version: 2
+  inbox:
+    jobs:
+      - process_inbox:
+          context: ae-node-assets
+          filters:
+            branches:
+              only:
+                - inbox
+
   publish:
     jobs:
       - publish_aws:
