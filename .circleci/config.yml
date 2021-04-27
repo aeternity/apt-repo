@@ -45,7 +45,7 @@ commands:
       - run:
           name: Setup git
           command: |
-            git config --global push.default simple
+            git config --global push.default current
             git config --global user.email "35604848+aeternity-bot@users.noreply.github.com"
             git config --global user.name "Aeternity APT CI"
 
