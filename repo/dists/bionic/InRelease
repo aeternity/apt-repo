@@ -1,47 +1,48 @@
 -----BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA512
+Hash: SHA256
 
 Origin: apt.aeternity.io
 Label: apt.aeternity.io
 Codename: bionic
-Date: Wed, 07 Apr 2021 14:52:00 UTC
+Date: Thu, 29 Apr 2021 08:37:51 UTC
 Architectures: amd64
 Components: main testing
 Description: Aeternity Repository
 MD5Sum:
- d41d8cd98f00b204e9800998ecf8427e 0 main/binary-amd64/Packages
- 7029066c27ac6f5ef18d660d5741979a 20 main/binary-amd64/Packages.gz
+ cedc70005a2360565213dbdf90136c90 761 main/binary-amd64/Packages
+ 0a79716e2608b4f5eb972796850fa539 512 main/binary-amd64/Packages.gz
  7b965db3fe44b908e80de8a4bfceca2f 119 main/binary-amd64/Release
  46aaf76e38a4ba7b738b73a2b0ef90b1 822 testing/binary-amd64/Packages
  cf245b76168629eaaa2636bc257c5fb0 536 testing/binary-amd64/Packages.gz
  37fd04fd37ac44991cd2f4ddaf940ede 122 testing/binary-amd64/Release
 SHA1:
- da39a3ee5e6b4b0d3255bfef95601890afd80709 0 main/binary-amd64/Packages
- 46c6643f07aa7f6bfe7118de926b86defc5087c4 20 main/binary-amd64/Packages.gz
+ 53e5bd9fc5b92d797cb3b4ecd5244bf439821d02 761 main/binary-amd64/Packages
+ e6081c1aba4c57d80b32acc037cb28fe95cbb36c 512 main/binary-amd64/Packages.gz
  413f9f3a8d3129f6f90debfdd4d84c1a24d1b0cd 119 main/binary-amd64/Release
  d76146124fd4270aa26daac8271b8126340d8dea 822 testing/binary-amd64/Packages
  39a761d5de644ccf8b03561e58cdef94cf152f79 536 testing/binary-amd64/Packages.gz
  354cbdce68d62f440dd7e193534c1791c9128b36 122 testing/binary-amd64/Release
 SHA256:
- e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0 main/binary-amd64/Packages
- 59869db34853933b239f1e2219cf7d431da006aa919635478511fabbfc8849d2 20 main/binary-amd64/Packages.gz
+ 2b933136e07710874aceed2a45948a62542a8e2389c1ff5118d2774840bfb2e7 761 main/binary-amd64/Packages
+ f4f6718a1fcf06c8d13fc2504f1236970b695b744cb8c8bce01597d0b951626e 512 main/binary-amd64/Packages.gz
  34f2281e9138229fabd8ad9d1c2017a4bae2d058e9d1373271927bcf5beb9f5e 119 main/binary-amd64/Release
  53f0f1b7e41fec3580e5577f441c0a2cd16eada8ddb78e29a15e54e8c70e1474 822 testing/binary-amd64/Packages
  9749e3fe1d515bb39f1fe97ab6ccd924015aa44c8714b31648b779ee523861e5 536 testing/binary-amd64/Packages.gz
  f17ca95f6d27235f0d22ac80c6e19d78109ceea77cced83ece487d0daa9a3569 122 testing/binary-amd64/Release
 -----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
 
-iQIzBAEBCgAdFiEE0Yq7RcWvkaDYNTZ+IQanc6QK+usFAmBtxxAACgkQIQanc6QK
-+uuBxA/8C9N2IQMYib69O/YiqA95ZymCoaSesaNgQB3Sx3Em9Nb2QUOVBkl7MprR
-IdoAT2mKC6bVO4WUfSRHldQw/jjk8Ze3cjTxPgVzkQYnsndchca1IR8FsafLh4/l
-b9Vnc/5T+3uf5+g3yBxgaEo+ZkM8jlUP4LgQ+qV2Oj15SFrv+UaJ5ljlFAnowHW2
-sY8vh5Eg0VMbzr6kggHrJbgxYLHlsmpQQCVjkV+CR3Ncy7ZFrO9B7kpU0UC/U2oc
-n34XXsVEI2/5MMhtrvFwU3gvZBe33DUgf1NzYSIZG4siaKSfG3PEqILU3e4x0zjU
-n+csZPZvywvklJ/EqPTOfpeyAP8vBiEZ01i7PpUDwUMpsPTDsce+Qv6SCCswP/ef
-w1emRDSjiWf0J8NJqCcDsuY3g96BYBm/ixqKSVG+C9BXKC+exXAX+SLVGe4IkJhh
-E91MVkIs17oRoCGhatEbq0gVOM/8ch8nqfQ/BuhrIxv0spvklRl3JsgiTr/+BKvX
-fRC74OeoRYFtTvXu4F/a4H15INXIhdm5NisNjgVg2rWfXL5zPdj1vcIQDJYXSGLq
-yxmRbKpDlqB8tnmkUFxZtWh+v742PbojlaknDJlYhDNMhxdp6AqzQnFsFcyJkL2Z
-7lvCebbo1JoB8+0WobD7EXbBfDmPE8iIQAwX7ZA2Q03OWbigkcg=
-=NcQ1
+iQIcBAEBCAAGBQJginBgAAoJECEGp3OkCvrrIWEQAKlGBxiwHVA4qiwcD4dKNEFW
+spH3TM2czCFLXKUwv0sHLR53cGqX17l55+NcnB+qxBIEluD33qPuqtR3ixMkHGHv
+9DBGqe2BNOzfFUa+RIextJSJ4Y0NHwGekF1vRuoCEj0ogEIyw5nnVGI9mYUp4jyU
+S62UPcyamFV1Lb34UXyTqsKO2PRQPeHs3TLtzowA1WMerBPRYzJd5tUyLwnc+7Dl
+iVRh++XSduxqxfYzc6R1G8ul2/ao+MW4OH0F4WgrduiYyizirpWdMyr2rVXwkcje
+PcZHNP50PC2jn+1ELhT4bUJGYeIPA5pcGW3c96xfE3dYygP8bRMDVzh8XXyC0dDk
+LQFQy06DOHFWk3KIIhQdxOABQqVR/5sFgZOowL5yYpiP1tqzqIr+rnDdXRk8QZ8x
+Y5e1MK0oCMBpiRdUnlQVLvy1O/fY6nQTG+Kr+1JGBzFg1PwdJ/t40sRlMi8GCEsw
+PR5qJfrlaGZZPyBimcc9GGGJjU7i3lwqLDtauMs8b7XBtfauHlm9wHmWeAvozuVa
+Pf1NV+ZRNa/PiW9DyE+LgN7ZCbO+FN9zhDYB8NQ+Z9sE94bJt4rGBHNkKddseYHB
+HsdfBTx5U8tQ6ogLI4SflTvhgMshoJs9vwo5xL3rYToi4IcAEZrhftGGXu2pS+1f
+yB5REmTKmXk3fahxICfo
+=83+b
 -----END PGP SIGNATURE-----
