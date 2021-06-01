@@ -1,16 +1,16 @@
 Package: aeternity-node
-Version: 6.0.0~rc3+6.ece01553-1
+Version: 6.0.0~rc4+1.5da3daae-1
 Architecture: amd64
 Maintainer: Aeternity Team <info@aeternity.com>
-Installed-Size: 45381
+Installed-Size: 45389
 Depends: libc6 (>= 2.18), libgcc1 (>= 1:4.2), libgmp10, libsodium23 (>= 1.0.12), libssl1.1 (>= 1.1.1), libstdc++6 (>= 7), libtinfo5 (>= 6), zlib1g (>= 1:1.2.8)
 Priority: optional
 Section: misc
-Filename: pool/testing/a/aeternity-node/aeternity-node_6.0.0~rc3+6.ece01553-1_amd64.deb
-Size: 24490716
-SHA256: 00dd4f8a776da8b960eeb3e0b3ef94014469c11d90108e302509a1c103494f59
-SHA1: b2ed6bf40580aac386ba668502622f79d1e50fd5
-MD5sum: 6bb064a3cf63444942cd91798f375f8d
+Filename: pool/testing/a/aeternity-node/aeternity-node_6.0.0~rc4+1.5da3daae-1_amd64.deb
+Size: 24497532
+SHA256: 12c595a7c6c142592f8ce8dcb16ba4f8439d932db8a5a02f01a4abeb5d235df9
+SHA1: 867c98ee49b15b521faf71541ae871b609eeedd1
+MD5sum: 267d4f97c36f4e1f729f2418c99db765
 Description: AEternity blockchain implementation in Erlang.
  Optimized for scalability via smart contracts inside
  state-channels. Has a built-in oracle for integration with real-world
