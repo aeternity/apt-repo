@@ -1,7 +1,7 @@
 Origin: apt.aeternity.io
 Label: apt.aeternity.io
 Codename: bionic
-Date: Tue, 29 Jun 2021 14:18:44 UTC
+Date: Thu, 01 Jul 2021 14:16:25 UTC
 Architectures: amd64
 Components: main testing
 Description: Aeternity Repository
@@ -9,20 +9,20 @@ MD5Sum:
  b3472a96e4f91c706aa5b5b625d40acd 763 main/binary-amd64/Packages
  094f2bf0f208e7cc59603e7157d7819a 513 main/binary-amd64/Packages.gz
  7b965db3fe44b908e80de8a4bfceca2f 119 main/binary-amd64/Release
- 6d90246ba1758d31aa207741a95a98b3 788 testing/binary-amd64/Packages
- 95ead23a7715a2e4c99a1610ba4320e1 523 testing/binary-amd64/Packages.gz
+ b3bc8f481c0267f10f090f2515e18f35 788 testing/binary-amd64/Packages
+ 7b1d11db4ef5a77b49a560f3ffcf8e30 525 testing/binary-amd64/Packages.gz
  37fd04fd37ac44991cd2f4ddaf940ede 122 testing/binary-amd64/Release
 SHA1:
  e04bff639c987aacc4a907730872356b85ea5cc8 763 main/binary-amd64/Packages
  8d815875989fc80f774ad6566de6f61d8dec61e3 513 main/binary-amd64/Packages.gz
  413f9f3a8d3129f6f90debfdd4d84c1a24d1b0cd 119 main/binary-amd64/Release
- da311b0a1e1de0ad7571cbdae5d6b7212ead99ad 788 testing/binary-amd64/Packages
- 57fd7ef65ebaf8bbde13fd97b85f1c327ee725ba 523 testing/binary-amd64/Packages.gz
+ 7ed0eb752db404d4618fe11cc40bec6af0b9409b 788 testing/binary-amd64/Packages
+ 2d8b132b304d57d5d730d605568d88f536bcd0ba 525 testing/binary-amd64/Packages.gz
  354cbdce68d62f440dd7e193534c1791c9128b36 122 testing/binary-amd64/Release
 SHA256:
  8bd6b0108605a4d35b9253759ed092cae625be925506f79e1022dac676370ad2 763 main/binary-amd64/Packages
  873a0f255f6b9c9f6d0aeabebb7c4abc506e1fc8c95fdca43965333fb5ca8d52 513 main/binary-amd64/Packages.gz
  34f2281e9138229fabd8ad9d1c2017a4bae2d058e9d1373271927bcf5beb9f5e 119 main/binary-amd64/Release
- 3d3bd8284c3c4cb6e82dff709cd833a931660057e4f99ddf31f37c6af75435c7 788 testing/binary-amd64/Packages
- 4d6de1408d12375566d888779a7081c95564759bcff3e8cb12f15fe47a25f7d9 523 testing/binary-amd64/Packages.gz
+ 04323b32d0e613209c59d4f4582977c0b6799fd55aa7a764baf9dabb27a2e9eb 788 testing/binary-amd64/Packages
+ 1b92604fdcc5ce6a1f65b6b64cec4cd942a634dda71df02feeb68c2b02fabcbd 525 testing/binary-amd64/Packages.gz
  f17ca95f6d27235f0d22ac80c6e19d78109ceea77cced83ece487d0daa9a3569 122 testing/binary-amd64/Release
