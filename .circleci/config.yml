@@ -11,7 +11,7 @@ executors:
       INBOX_PATH: /home/circleci/project/inbox/aeternity-node
   infra_stable:
     docker:
-      - image: aeternity/infrastructure:latest
+      - image: aeternity/infrastructure:v2.12.3
     environment:
       REPO_PATH: repo/
       SECRETS_OUTPUT_DIR: /secrets
