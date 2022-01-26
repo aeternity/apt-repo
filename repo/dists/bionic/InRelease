@@ -4,7 +4,7 @@ Hash: SHA256
 Origin: apt.aeternity.io
 Label: apt.aeternity.io
 Codename: bionic
-Date: Tue, 25 Jan 2022 14:51:07 UTC
+Date: Wed, 26 Jan 2022 12:17:14 UTC
 Architectures: amd64
 Components: main testing
 Description: Aeternity Repository
@@ -12,37 +12,37 @@ MD5Sum:
  238125cbee160e6ff8b1f973ba93acb6 763 main/binary-amd64/Packages
  d8960211283f9ef1890843e6e6fae322 515 main/binary-amd64/Packages.gz
  7b965db3fe44b908e80de8a4bfceca2f 119 main/binary-amd64/Release
- f4888340e57a9a2c078f119a7b819c44 778 testing/binary-amd64/Packages
- c50f1ff1aa536bb1f48bb5946f357772 515 testing/binary-amd64/Packages.gz
+ 10150efcd59ecf2072a1434822b4e1bd 778 testing/binary-amd64/Packages
+ 815c9c3f924c24c2dde3e6cd9b342158 519 testing/binary-amd64/Packages.gz
  37fd04fd37ac44991cd2f4ddaf940ede 122 testing/binary-amd64/Release
 SHA1:
  c5ceb75a33be653f25b8f04ae0d845ed8862f7b0 763 main/binary-amd64/Packages
  9bc8eb0c0176a0b49a5148b57636ffa0e55c4e43 515 main/binary-amd64/Packages.gz
  413f9f3a8d3129f6f90debfdd4d84c1a24d1b0cd 119 main/binary-amd64/Release
- f2934b17124bc31c822e9da99b8e11e5f361ccf1 778 testing/binary-amd64/Packages
- 365356fe40bf5cd25dfa63262c21b554b6b2ecff 515 testing/binary-amd64/Packages.gz
+ ce299ef2d0c70bc6076e576227477612b511f870 778 testing/binary-amd64/Packages
+ 7f5c1db2e1fe5f5aa0e8365c169b5e2bbc086be8 519 testing/binary-amd64/Packages.gz
  354cbdce68d62f440dd7e193534c1791c9128b36 122 testing/binary-amd64/Release
 SHA256:
  b1d73fbb71a7e7128009c47a260bdebf9d136012636978a7780bb18db7ccccbe 763 main/binary-amd64/Packages
  e957c6d41020fbd82bce1223a3936626f6610c8a7a8ea890533bf0d3b0244cf8 515 main/binary-amd64/Packages.gz
  34f2281e9138229fabd8ad9d1c2017a4bae2d058e9d1373271927bcf5beb9f5e 119 main/binary-amd64/Release
- 4a420d05151961d44a9ecec3856b27a06469e4016ee79d0ba2aa232641a00311 778 testing/binary-amd64/Packages
- 3e5395e804d96372968c21437ef1a1f7c0bee616ead4dbb6714c03bd5ea49ead 515 testing/binary-amd64/Packages.gz
+ 44677500fd1bf88295f54cf1e885c575850f220fda162d609a7911e5955c1c55 778 testing/binary-amd64/Packages
+ 51ab84169e08e800e6de2ed196fa776f616e22b551653dfcc16014b8a538ea23 519 testing/binary-amd64/Packages.gz
  f17ca95f6d27235f0d22ac80c6e19d78109ceea77cced83ece487d0daa9a3569 122 testing/binary-amd64/Release
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v2
 
-iQIcBAEBCAAGBQJh8A5cAAoJECEGp3OkCvrrwO0P/RT7np5Z0XrlmRgSDailCv7Z
-Xxu0rlwLm0BFRZ/TFsFcHMYl231vVvJ/ecfYL/lJlTTAg6GixTWl3y6luKliUuLT
-MUFC0VOjMQQr4tGMTXM1WBfjrxU/rYtofkvJMn6LSYsewSIjBnr2OMLuOLKH7PFZ
-RrGbOdgfh0ssDYymvzeRweQ6GUXVcPPKynQsyAJPZY+/vMbZ4Fcrdh97aIP6+6wM
-RDhS2LxZsaixZ99EfopQlQ6ZzsOMhSQID2UJvjS9lhf692+RAjv+8yhL4WJTgnC6
-fczd0VC/D+4MtiRbeYWRwdPKgQq+zRCoX3hluBeM7FFTNG78NuBmdI/HbF0V2EkH
-GMZtB5i2RsnOtjUvHly7/DDzht+P1/H+QmzaoZJHt9X9X0O0tp6MkckHJO2tTFQL
-GGioygEENXJiwKiJHeg6pX29HlURbPQXYn1KqYgA6acY4IEYZrRQHd1RBsjlYzDc
-GkhVzSvN52Kx45DZbaYu/nHeU6yttzitbfjbTgxj1/eMdVuJl2Quff0W+cfjicF0
-cz+GdFSdb5AivMSEQOu2gw+wpwX0w0MPmSr70WhAD/WGgKO1Xs4++reZwI0xFX+D
-GhNcyuqDkQeVeJOORM5yK0glv4gKroPwocjkkGnnwZlWg2fg+J2wMuwWdWDlekXY
-lUs8XkgAGzRkWoC7zJeD
-=BUVf
+iQIcBAEBCAAGBQJh8TvLAAoJECEGp3OkCvrreqEP/A9uud/HuTmcEzFm++Bru2Ew
+it+YZDeVfnPKew9luGFmzARaNeAkgLhzY8cKEO/H2RxYR+0a1TvzySyn36Wi5CVk
+6nKlD1FExDKmmLWjMiPuANEJpg1b3pr17CJNnzWv7sPUKsANjswSwK8WgFMlRLxk
+6FfYu5XylU6+UyfFB1K8iJq8ssjPjU2TKAfYoIzJYlCbyYOZ1LNU/Kc0nElVF7YC
+SeQBBR2Cv9hS3KLIlmblqVmkoI3cTUAjlf9MtNO4Hc7uc5uAzlPvdPPBTZ2SMJOR
+GUAi9xv13nztPORwmYkuroAy4eQTAyHGbs2DB6dfsp9SDzuwJT5MZMgpiyZVP2Lx
+ReXkrbOKo0mSUITXSI+YNwHBOPHsYezX31hpnV18pnKofRptaaRpwNJM2L9vjaxM
+InFOdQs6pC6JzjExQz49fXJ5n+qNQNm1DM2mU2dE+zt4iyZiPDK2HbgBHpwQV/0K
+NTWf+de1BeW1oCsROeEJPmAApnVzTOWnFnTWxdR9b0cjwc16d9Y2sCiZdWdl1NHn
+ZFqf++6wfs9z0L+wN+wFKtaOpHiMFW/kkTpirL3yVTbjnKc/Jc9dWzPB1byTh5qw
+kiafDTBP7HoiYG/yZ5J6vR0SyjW6tEyj0rpZOnSmcLCg56Sd0Py1C297aSrgUt74
+lhWW+g3np/yFTMdankYI
+=KLqU
 -----END PGP SIGNATURE-----
