@@ -145,7 +145,7 @@ workflows:
   inbox:
     jobs:
       - process_inbox:
-          context: ae-node-assets
+          context: ae-vault-node-assets
           filters:
             branches:
               only:
@@ -154,7 +154,7 @@ workflows:
   publish:
     jobs:
       - publish_aws:
-          context: ae-node-assets
+          context: ae-vault-node-assets
           filters:
             branches:
               only:
