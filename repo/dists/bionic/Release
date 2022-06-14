@@ -1,27 +1,27 @@
 Origin: apt.aeternity.io
 Label: apt.aeternity.io
 Codename: bionic
-Date: Tue, 14 Jun 2022 16:47:03 UTC
+Date: Tue, 14 Jun 2022 17:18:37 UTC
 Architectures: amd64
 Components: main testing
 Description: Aeternity Repository
 MD5Sum:
- ca7067c84370a023ff7f91da0ac9ede8 753 main/binary-amd64/Packages
- 8d30e3c956b836be366c8a33b2897528 510 main/binary-amd64/Packages.gz
+ 1b863a9758f37bea2518f180378f7042 753 main/binary-amd64/Packages
+ 95b0b7534d0448d93fd15bcaa4ddeef9 510 main/binary-amd64/Packages.gz
  7b965db3fe44b908e80de8a4bfceca2f 119 main/binary-amd64/Release
  968a787663ca6733f82907bedf0181a6 756 testing/binary-amd64/Packages
  a989ef7164cc569bc97c7daca377cd37 511 testing/binary-amd64/Packages.gz
  37fd04fd37ac44991cd2f4ddaf940ede 122 testing/binary-amd64/Release
 SHA1:
- c1bc6c4c813f4e038d71a408bdddbdcf9bb44106 753 main/binary-amd64/Packages
- 8e96f44b67036a9a83a8222ee92e28f767ae3598 510 main/binary-amd64/Packages.gz
+ 158c4fdb8c718f1eae04374d1893bab1d57abd12 753 main/binary-amd64/Packages
+ f0fd0ec55afed88a80ada534b8d00bc7ab276c97 510 main/binary-amd64/Packages.gz
  413f9f3a8d3129f6f90debfdd4d84c1a24d1b0cd 119 main/binary-amd64/Release
  e746b7968b57181136862f4849358e90795bc3f3 756 testing/binary-amd64/Packages
  8833500e98eaacf535993d5d7d1779880cbce893 511 testing/binary-amd64/Packages.gz
  354cbdce68d62f440dd7e193534c1791c9128b36 122 testing/binary-amd64/Release
 SHA256:
- 23a28ff95e11a43b679d1a15133e90db3bca959146858d8b28aaf72395d1550e 753 main/binary-amd64/Packages
- 756b5eae2a7a775527ecfebdd96e63112158f3c0e47b3db8fe5267e0143ec207 510 main/binary-amd64/Packages.gz
+ 7cfa92c9b55e6d36b2342a6f5db4cadd949e10182cb6b8b37a0b023ed6f3410a 753 main/binary-amd64/Packages
+ 68e318891e511f02896b244a0b58c3cd379aa9a5e9befbef5f163ae1479af28e 510 main/binary-amd64/Packages.gz
  34f2281e9138229fabd8ad9d1c2017a4bae2d058e9d1373271927bcf5beb9f5e 119 main/binary-amd64/Release
  289e9065b9cb2f251777685ce29d0fba2ae8906d29d484b7a311ad6978e15bb5 756 testing/binary-amd64/Packages
  8d15012e7a138d621fc61e8333ab44a8a6af0decd1e10087ecb794c5bd66f132 511 testing/binary-amd64/Packages.gz
